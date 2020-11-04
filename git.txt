@@ -1,0 +1,3 @@
+git config --local user.name "Sergey"
+
+git config --local user.emal ilkov1103@gmail.com
