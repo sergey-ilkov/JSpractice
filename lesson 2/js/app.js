@@ -6,13 +6,18 @@ var mainList = {
     name: nameShop,
     shopGoods: [],
     employers: {},
-    open: '',
+    open: false
 }
 
 
 for (let i=0; i < 3; i++) {
     var question = prompt("Какой тип товаров будем продавать?");
-    mainList.shopGoods.push(question);
+    if (typeof(question) === "string" && typeof(question) != null 
+    && question != '' && question.length < 50) {
+        mainList.shopGoods.push(question);        
+    } else {
+        i--
+    }
 }
 
 
