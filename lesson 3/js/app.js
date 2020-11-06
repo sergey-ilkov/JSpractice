@@ -20,7 +20,7 @@ let mainList = {
     shopGoods: [],
     employers: {},
     open: false,
-    discont: false
+    discont: true
 }
 
 function chooseGoods() {
@@ -36,8 +36,32 @@ function chooseGoods() {
 }
 chooseGoods();
 
-const info = document.querySelector('.info');
+const discontInf = document.querySelector('.discontInf');
 
+function discontF(price) {
+    if (mainList.discont) {
+        return price * 0.8
+    } else {
+        return price
+    }
+}
+
+discontInf.innerHTML = 'Цена: ' + discontF(100);
+
+const employersInf = document.querySelector('.employersInf');
+
+for (let i = 0; i < 4; i++) {
+    let empl = prompt("Имя работника?");
+    empl = empl[0].toUpperCase() + empl.substring(1);
+    mainList.employers[i] = empl;
+}
+
+let listEmployer = '';
+for (let key in mainList.employers) { listEmployer += mainList.employers[key] + ', '};
+
+employersInf.innerHTML = 'Имена работников: ' + listEmployer;
+
+const info = document.querySelector('.info');
 function workTime(time) {
     if (time < 0) {
         info.innerHTML = 'Такого не может быть!';
@@ -50,7 +74,7 @@ function workTime(time) {
     }
 }
 
-workTime(26)
+workTime(9)
 
 const shop = document.querySelector('.shop');
 shop.innerHTML = 'Название магазина: ' + mainList.name;
